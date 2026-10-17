@@ -1,0 +1,15 @@
+.tag {
+    border-radius: var(--radius);
+    border: 2px solid var(--background);
+    color: var(--white);
+    width: fit-content;
+
+    background: rgba(148, 215, 242, 0.2);
+
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
+
+    padding: 0.4rem 1rem;
+    font-size: .8rem;
+
+}

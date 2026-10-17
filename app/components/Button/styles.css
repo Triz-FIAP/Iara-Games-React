@@ -1,0 +1,41 @@
+.button {
+    border: none;
+    font-weight: bold;
+    border-radius: var(--radius);
+    cursor: pointer;
+    padding-block: .8rem;
+    padding-inline: 2rem;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+}
+
+.primary {
+    background-color: var(--light-blue);
+    color: var(--dark-blue-hover);
+}
+
+.secondary,
+.iconButton {
+    border: 1px solid var(--light-blue) !important;
+    color: var(--light-blue) !important;
+    background-color: transparent;
+}
+
+.link {
+    color: var(--light-blue);
+    background-color: transparent;
+}
+
+.primary:hover,
+.secondary:hover,
+.iconButton:hover {
+    background-color: var(--light-blue-hover);
+    color: var(--white);
+    transition: all .3s ease-in-out;
+}
+
+.link:hover {
+    color: var(--white);
+    transition: all .3s ease-in-out;
+}

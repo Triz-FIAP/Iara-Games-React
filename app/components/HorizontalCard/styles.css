@@ -1,0 +1,53 @@
+.horizontal-card {
+    background: linear-gradient(to right, #092B8C 24%, #215CD5 100%);
+    width: 60%;
+    border-radius: var(--radius);
+    height: fit-content;
+    padding: 1.2rem;
+    display: flex;
+    gap: .8rem;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    margin-block: 2rem;
+    cursor: pointer;
+}
+
+.horizontal-card:hover {
+    scale: 110%;
+    transition: all .2s ease-in-out;
+}
+
+.title {
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+}
+
+h3 {
+    font-size: 1.5rem;
+    max-width: 15rem;
+    text-overflow: ellipsis;
+    overflow: hidden;
+    white-space: nowrap;
+}
+
+.horizontal-tags {
+    display: flex;
+    flex-wrap: wrap;
+    max-width: 15rem;
+    gap: .5rem;
+    grid-row: 2;
+}
+
+.horizontal-informations {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: 1fr 1fr;
+    align-items: center;
+}
+
+.horizontal-informations>p {
+    justify-self: end;
+    font-weight: bold;
+}

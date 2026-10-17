@@ -1,0 +1,16 @@
+nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-inline: 6.25rem;
+}
+
+ul {
+    list-style: none;
+    display: flex;
+
+    li:hover {
+        text-decoration: underline;
+        text-underline-offset: 4px;
+    }
+}

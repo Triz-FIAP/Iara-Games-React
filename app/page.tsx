@@ -1,69 +1,156 @@
-import Image from "next/image";
-import styles from "./page.module.css";
+"use client"
+
+import logo from "@/public/logo-hero.svg"
+import Image from "next/image"
+import { ButtonComponent } from "./components/Button/ButtonComponent"
+import { VerticalCardComponent } from "./components/VerticalCard/VerticalCardComponent"
+import "./styles.css"
+
+import heroiCover from "@/public/games/adventure/heroi.svg"
+import momodoraCover from "@/public/games/adventure/momodora.svg"
+import monicaCover from "@/public/games/adventure/monica.svg"
+
+import mulletMadjackCover from "@/public/games/action/mullet-madjack.svg"
+import dandaraCover from "@/public/games/action/dandara.svg"
+import blazingChromeCover from "@/public/games/action/blazing-chrome.svg"
+import { HorizontalCardComponent } from "./components/HorizontalCard/HorizontalCardComponent"
+
 
 export default function Home() {
-  return (
-    <div className={styles.page}>
-      <main className={styles.main}>
-        <Image
-          className={styles.logo}
-          src="/next.svg"
-          alt="Next.js logo"
-          width={100}
-          height={20}
-          priority
-        />
-        <div className={styles.intro}>
-          <h1>
-            To get started, edit the{" "}
-            <code className={styles.code}>page.tsx</code> file.
-          </h1>
-          <p>
-            Looking for a starting point or more instructions? Head over to{" "}
-            <a
-              href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              Templates
-            </a>{" "}
-            or the{" "}
-            <a
-              href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              Learning
-            </a>{" "}
-            center.
-          </p>
+  return <>
+    <section className="hero">
+      <div className="text">
+        <h1>Onde a lenda <br /> <span>encontra performance.</span></h1>
+        <p>Somos a maior plataforma de compra
+          e troca de games do Brasil</p>
+        <div>
+          <ButtonComponent href="/pages/login" type="primary" text="Entrar" />
+          <ButtonComponent href="/pages/signIn" type="secondary" text="Cadastrar" />
         </div>
-        <div className={styles.ctas}>
-          <a
-            className={styles.primary}
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <Image
-              className={styles.logo}
-              src="/vercel.svg"
-              alt="Vercel logomark"
-              width={16}
-              height={14}
-            />
-            Deploy Now
-          </a>
-          <a
-            className={styles.secondary}
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Documentation
-          </a>
-        </div>
-      </main>
-    </div>
-  );
+      </div>
+      <Image src={logo} alt="Logo do Iara Games" className="logo" />
+    </section>
+    <section>
+      <h2>Jogos de aventura</h2>
+      <div className="adventure-games">
+        <VerticalCardComponent
+          href="/"
+          img={heroiCover}
+          title="A lenda do herói"
+          tags={["FPS", "PC", "Arcade", "Arcade", "Arcade", "Arcade"]}
+          price={14.99}
+          evaluation={4.2}
+          isFavorite={false}
+          isOnCart={false} />
+        <VerticalCardComponent
+          href="/"
+          img={monicaCover}
+          title="Mônica: no castelo do dragão"
+          tags={["FPS", "PC", "Arcade", "Arcade", "Arcade", "Arcade"]}
+          price={14.99}
+          evaluation={4.2}
+          isFavorite={false}
+          isOnCart={false} />
+        <VerticalCardComponent
+          href="/"
+          img={momodoraCover}
+          title="Momodora"
+          tags={["FPS", "PC", "Arcade", "Arcade", "Arcade", "Arcade"]}
+          price={14.99}
+          evaluation={4.2}
+          isFavorite={false}
+          isOnCart={false} />
+      </div>
+    </section>
+    <section>
+      <h2>Jogos de ação</h2>
+      <div className="action-games">
+        <VerticalCardComponent
+          href="/"
+          img={mulletMadjackCover}
+          title="Mullet Madjack"
+          tags={["FPS", "PC", "Arcade", "Arcade", "Arcade", "Arcade"]}
+          price={14.99}
+          evaluation={4.2}
+          isFavorite={false}
+          isOnCart={false} />
+        <VerticalCardComponent
+          href="/"
+          img={dandaraCover}
+          title="Dandara"
+          tags={["FPS", "PC", "Arcade", "Arcade", "Arcade", "Arcade"]}
+          price={14.99}
+          evaluation={4.2}
+          isFavorite={false}
+          isOnCart={false} />
+        <VerticalCardComponent
+          href="/"
+          img={blazingChromeCover}
+          title="Blazing Chrome"
+          tags={["FPS", "PC", "Arcade", "Arcade", "Arcade", "Arcade"]}
+          price={14.99}
+          evaluation={4.2}
+          isFavorite={false}
+          isOnCart={false} />
+      </div>
+    </section>
+    <section>
+      <h2>todos os jogos</h2>
+      <HorizontalCardComponent
+        href="/"
+        img={mulletMadjackCover}
+        title="Mullet Madjack"
+        tags={["FPS", "PC", "Arcade", "Arcade", "Arcade", "Arcade"]}
+        price={14.99}
+        evaluation={4.2}
+        isFavorite={false}
+        isOnCart={false}
+      />
+      <HorizontalCardComponent
+        img={heroiCover}
+        href="/"
+        title="A lenda do herói"
+        tags={["FPS", "PC", "Arcade", "Arcade", "Arcade", "Arcade"]}
+        price={14.99}
+        evaluation={4.2}
+        isFavorite={false}
+        isOnCart={false} />
+      <HorizontalCardComponent
+        href="/"
+        img={monicaCover}
+        title="Mônica: no castelo do dragão"
+        tags={["FPS", "PC", "Arcade", "Arcade", "Arcade", "Arcade"]}
+        price={14.99}
+        evaluation={4.2}
+        isFavorite={false}
+        isOnCart={false} />
+      <HorizontalCardComponent
+        href="/"
+        img={momodoraCover}
+        title="Momodora"
+        tags={["FPS", "PC", "Arcade", "Arcade", "Arcade", "Arcade"]}
+        price={14.99}
+        evaluation={4.2}
+        isFavorite={false}
+        isOnCart={false} />
+      <HorizontalCardComponent
+        href="/"
+        img={dandaraCover}
+        title="Dandara"
+        tags={["FPS", "PC", "Arcade", "Arcade", "Arcade", "Arcade"]}
+        price={14.99}
+        evaluation={4.2}
+        isFavorite={false}
+        isOnCart={false} />
+      <HorizontalCardComponent
+        href="/"
+        img={blazingChromeCover}
+        title="Blazing Chrome"
+        tags={["FPS", "PC", "Arcade", "Arcade", "Arcade", "Arcade"]}
+        price={14.99}
+        evaluation={4.2}
+        isFavorite={false}
+        isOnCart={false} />
+    </section>
+  </>
 }

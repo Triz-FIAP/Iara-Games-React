@@ -1,0 +1,49 @@
+.Card {
+    background: linear-gradient(to bottom, #092B8C 24%, #215CD5 100%);
+    width: fit-content;
+    border-radius: var(--radius);
+    height: fit-content;
+    padding: 1.2rem;
+    display: flex;
+    gap: .8rem;
+    flex-direction: column;
+}
+
+h3 {
+    font-size: 1.3rem;
+    max-width: 15rem;
+    text-overflow: ellipsis;
+    overflow: hidden;
+    white-space: nowrap;
+}
+
+.tags {
+    display: flex;
+    gap: .5rem;
+    max-width: 15rem;
+    overflow: hidden;
+    overflow-x: scroll;
+
+    scrollbar-width: none;
+    /* Firefox */
+    -ms-overflow-style: none;
+}
+
+.tags::-webkit-scrollbar {
+    display: none;
+}
+
+.price {
+    font-weight: bold;
+}
+
+.informations {
+    display: flex;
+    justify-content: space-between;
+}
+
+.iconsButton {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: .3rem;
+}
