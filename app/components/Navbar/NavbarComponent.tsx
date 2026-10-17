@@ -7,8 +7,8 @@ export function NavbarComponent() {
     return <nav>
         <Image src={logo} alt="Iara Games Logo" />
         <ul>
-            <li><ButtonComponent hasIcon={false} text="Início" type="link" href="/" /></li>
-            <li><ButtonComponent hasIcon={false} text="Entrar" type="link" href="/pages/login" /></li>
+            <li><ButtonComponent text="Início" type="link" href="/" /></li>
+            <li><ButtonComponent text="Entrar" type="link" href="/pages/login" /></li>
 
         </ul>
     </nav>
