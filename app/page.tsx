@@ -6,8 +6,6 @@ import { ButtonComponent } from "./components/Button/ButtonComponent"
 import { VerticalCardComponent } from "./components/VerticalCard/VerticalCardComponent"
 import "./styles.css"
 
-import heroiCover from "@/public/games/adventure/heroi.svg"
-
 import { useEffect, useState } from "react"
 import { HorizontalCardComponent } from "./components/HorizontalCard/HorizontalCardComponent"
 import { getCompanies } from "./services/getCompanies"
@@ -36,7 +34,7 @@ export default function Home() {
         if (!game.cover || !game.cover.url) {
           game.cover = {
             id: 0,
-            url: heroiCover
+            url: ''
           }
         }
         else {
