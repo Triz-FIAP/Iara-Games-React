@@ -7,16 +7,46 @@ import { VerticalCardComponent } from "./components/VerticalCard/VerticalCardCom
 import "./styles.css"
 
 import heroiCover from "@/public/games/adventure/heroi.svg"
-import momodoraCover from "@/public/games/adventure/momodora.svg"
-import monicaCover from "@/public/games/adventure/monica.svg"
 
-import mulletMadjackCover from "@/public/games/action/mullet-madjack.svg"
-import dandaraCover from "@/public/games/action/dandara.svg"
-import blazingChromeCover from "@/public/games/action/blazing-chrome.svg"
+import { useEffect, useState } from "react"
 import { HorizontalCardComponent } from "./components/HorizontalCard/HorizontalCardComponent"
-
+import { getCompanies } from "./services/getCompanies"
+import { GamesResponse, getGames } from "./services/getGames"
 
 export default function Home() {
+
+  const [games, setGames] = useState<GamesResponse[]>([]);
+  const [companies, setCompanies] = useState<string[]>([]);
+
+  // Genero aventura: 31
+  // Como eles não tem gênero de ação, escolhi indie: 32 
+
+  useEffect(() => {
+    getCompanies().then((data) => {
+
+      data.map((company) => {
+        setCompanies((prevCompanies) => [...prevCompanies, company.id.toString()]);
+      })
+    })
+  }, []);
+
+  useEffect(() => {
+    companies.length > 0 && getGames(companies, ["31", "32"]).then((data) => {
+      data.forEach((game) => {
+        if (!game.cover || !game.cover.url) {
+          game.cover = {
+            id: 0,
+            url: heroiCover
+          }
+        }
+        else {
+          game.cover.url = `https:${game.cover.url}`;
+        }
+      })
+      setGames(data);
+    });
+  }, [companies]);
+
   return <>
     <section className="hero">
       <div className="text">
@@ -33,124 +63,55 @@ export default function Home() {
     <section>
       <h2>Jogos de aventura</h2>
       <div className="adventure-games">
-        <VerticalCardComponent
-          href="/"
-          img={heroiCover}
-          title="A lenda do herói"
-          tags={["FPS", "PC", "Arcade", "Arcade", "Arcade", "Arcade"]}
-          price={14.99}
-          evaluation={4.2}
-          isFavorite={false}
-          isOnCart={false} />
-        <VerticalCardComponent
-          href="/"
-          img={monicaCover}
-          title="Mônica: no castelo do dragão"
-          tags={["FPS", "PC", "Arcade", "Arcade", "Arcade", "Arcade"]}
-          price={14.99}
-          evaluation={4.2}
-          isFavorite={false}
-          isOnCart={false} />
-        <VerticalCardComponent
-          href="/"
-          img={momodoraCover}
-          title="Momodora"
-          tags={["FPS", "PC", "Arcade", "Arcade", "Arcade", "Arcade"]}
-          price={14.99}
-          evaluation={4.2}
-          isFavorite={false}
-          isOnCart={false} />
+        {games.length > 0 && games.filter((game) => game.genres?.some((genre) => genre.id === 31)).map((game) => (
+          <VerticalCardComponent
+            key={game.id}
+            href={`/pages/game/${game.id}`}
+            img={game.cover.url}
+            title={game.name}
+            tags={game.genres?.map((genre) => genre.name) || []}
+            price={14.99}
+            evaluation={game.rating || 0}
+            isFavorite={false}
+            isOnCart={false} />
+        ))
+        }
       </div>
     </section>
     <section>
-      <h2>Jogos de ação</h2>
+      <h2>Jogos Indie</h2>
       <div className="action-games">
-        <VerticalCardComponent
-          href="/"
-          img={mulletMadjackCover}
-          title="Mullet Madjack"
-          tags={["FPS", "PC", "Arcade", "Arcade", "Arcade", "Arcade"]}
-          price={14.99}
-          evaluation={4.2}
-          isFavorite={false}
-          isOnCart={false} />
-        <VerticalCardComponent
-          href="/"
-          img={dandaraCover}
-          title="Dandara"
-          tags={["FPS", "PC", "Arcade", "Arcade", "Arcade", "Arcade"]}
-          price={14.99}
-          evaluation={4.2}
-          isFavorite={false}
-          isOnCart={false} />
-        <VerticalCardComponent
-          href="/"
-          img={blazingChromeCover}
-          title="Blazing Chrome"
-          tags={["FPS", "PC", "Arcade", "Arcade", "Arcade", "Arcade"]}
-          price={14.99}
-          evaluation={4.2}
-          isFavorite={false}
-          isOnCart={false} />
+        {games.length > 0 && games.filter((game) => game.genres?.some((genre) => genre.id === 32)).map((game) => (
+          <VerticalCardComponent
+            key={game.id}
+            href={`/pages/game/${game.id}`}
+            img={game.cover.url}
+            title={game.name}
+            tags={game.genres?.map((genre) => genre.name) || []}
+            price={14.99}
+            evaluation={game.rating || 0}
+            isFavorite={false}
+            isOnCart={false} />
+        ))
+        }
       </div>
     </section>
     <section>
       <h2>todos os jogos</h2>
-      <HorizontalCardComponent
-        href="/"
-        img={mulletMadjackCover}
-        title="Mullet Madjack"
-        tags={["FPS", "PC", "Arcade", "Arcade", "Arcade", "Arcade"]}
-        price={14.99}
-        evaluation={4.2}
-        isFavorite={false}
-        isOnCart={false}
-      />
-      <HorizontalCardComponent
-        img={heroiCover}
-        href="/"
-        title="A lenda do herói"
-        tags={["FPS", "PC", "Arcade", "Arcade", "Arcade", "Arcade"]}
-        price={14.99}
-        evaluation={4.2}
-        isFavorite={false}
-        isOnCart={false} />
-      <HorizontalCardComponent
-        href="/"
-        img={monicaCover}
-        title="Mônica: no castelo do dragão"
-        tags={["FPS", "PC", "Arcade", "Arcade", "Arcade", "Arcade"]}
-        price={14.99}
-        evaluation={4.2}
-        isFavorite={false}
-        isOnCart={false} />
-      <HorizontalCardComponent
-        href="/"
-        img={momodoraCover}
-        title="Momodora"
-        tags={["FPS", "PC", "Arcade", "Arcade", "Arcade", "Arcade"]}
-        price={14.99}
-        evaluation={4.2}
-        isFavorite={false}
-        isOnCart={false} />
-      <HorizontalCardComponent
-        href="/"
-        img={dandaraCover}
-        title="Dandara"
-        tags={["FPS", "PC", "Arcade", "Arcade", "Arcade", "Arcade"]}
-        price={14.99}
-        evaluation={4.2}
-        isFavorite={false}
-        isOnCart={false} />
-      <HorizontalCardComponent
-        href="/"
-        img={blazingChromeCover}
-        title="Blazing Chrome"
-        tags={["FPS", "PC", "Arcade", "Arcade", "Arcade", "Arcade"]}
-        price={14.99}
-        evaluation={4.2}
-        isFavorite={false}
-        isOnCart={false} />
+      {
+        games.length > 0 && games.map((game) => (
+          <HorizontalCardComponent
+            key={game.id}
+            href={`/pages/game/${game.id}`}
+            img={game.cover.url}
+            title={game.name}
+            tags={game.genres?.map((genre) => genre.name) || []}
+            price={14.99}
+            evaluation={game.rating || 0}
+            isFavorite={false}
+            isOnCart={false} />
+        ))
+      }
     </section>
   </>
 }

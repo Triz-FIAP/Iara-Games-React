@@ -19,7 +19,7 @@ export interface propsCard {
 
 export function VerticalCardComponent({ ...props }: propsCard) {
     return <div className="Card">
-        <Image width={250} src={props.img} alt={`Capa do jogo ${props.title}`} />
+        <Image className='img' width={250} height={250} src={props.img ? props.img : ''} alt={`Capa do jogo ${props.title}`} />
         <h3>{props.title}</h3>
         <div className="tags">
             {props.tags.map((tag, index) => {
@@ -31,7 +31,7 @@ export function VerticalCardComponent({ ...props }: propsCard) {
             <p><Image src={star} alt="Estrela" />{props.evaluation}</p>
         </div>
         <ButtonComponent
-            href="/"
+            href={props.href}
             type="primary"
             text="Acessar"
         />

@@ -7,7 +7,7 @@ import Link from 'next/link'
 
 export function HorizontalCardComponent({ ...props }: propsCard) {
     return <Link href={props.href} className="horizontal-card">
-        <Image width={250} src={props.img} alt={`Capa do jogo ${props.title}`} />
+        <Image className='img' width={250} height={250} src={props.img} alt={`Capa do jogo ${props.title}`} />
 
         <div className="horizontal-informations">
             <h3>{props.title}</h3>

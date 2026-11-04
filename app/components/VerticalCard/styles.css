@@ -9,6 +9,10 @@
     flex-direction: column;
 }
 
+.img {
+    border-radius: var(--radius);
+}
+
 h3 {
     font-size: 1.3rem;
     max-width: 15rem;
@@ -19,7 +23,7 @@ h3 {
 
 .tags {
     display: flex;
-    gap: .5rem;
+    gap: .2rem;
     max-width: 15rem;
     overflow: hidden;
     overflow-x: scroll;
