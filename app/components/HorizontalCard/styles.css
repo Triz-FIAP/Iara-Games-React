@@ -1,6 +1,6 @@
 .horizontal-card {
     background: linear-gradient(to right, #092B8C 24%, #215CD5 100%);
-    width: 60%;
+    width: 100%;
     border-radius: var(--radius);
     height: fit-content;
     padding: 1.2rem;

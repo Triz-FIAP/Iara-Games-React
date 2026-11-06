@@ -20,13 +20,9 @@
   }
 }
 
-h1 {
+.title {
   text-transform: uppercase;
   font-size: 2.3rem;
-}
-
-span {
-  font-size: 2rem;
 }
 
 section:nth-child(2),
@@ -43,13 +39,13 @@ section:nth-child(4) {
   flex-direction: column;
 }
 
-h2 {
+.categoryTitle {
   text-transform: uppercase;
   align-self: flex-start;
 }
 
-.adventure-games,
-.action-games {
+.adventureGames,
+.actionGames {
   display: flex;
   justify-content: space-around;
   margin-block: 3rem;
@@ -58,25 +54,8 @@ h2 {
   padding-bottom: 1rem;
 }
 
-/* 1. Defina a largura total (largura do puxador + o espaço que você quer) */
-::-webkit-scrollbar {
-  width: 10px;
-  /* Aumentamos para dar espaço ao vão */
-}
-
-/* 2. O trilho de fundo (opcional: deixe transparente para parecer que a barra flutua) */
-::-webkit-scrollbar-track {
-  background: transparent;
-}
-
-/* 3. O truque mágico no puxador */
-::-webkit-scrollbar-thumb {
-  background-color: var(--light-blue);
-  border-radius: var(--radius);
-}
-
-/* Efeito hover mantendo a borda */
-::-webkit-scrollbar-thumb:hover {
-  background-color: var(--light-blue-hover);
-  cursor: pointer;
+@media screen and (max-width: 1024px) {
+  .allGames {
+    width: 100%;
+  }
 }

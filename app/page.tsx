@@ -4,7 +4,7 @@ import logo from "@/public/logo-hero.svg"
 import Image from "next/image"
 import { ButtonComponent } from "./components/Button/ButtonComponent"
 import { VerticalCardComponent } from "./components/VerticalCard/VerticalCardComponent"
-import "./styles.css"
+import style from "./page.module.css"
 
 import { useEffect, useState } from "react"
 import { HorizontalCardComponent } from "./components/HorizontalCard/HorizontalCardComponent"
@@ -46,9 +46,9 @@ export default function Home() {
   }, [companies]);
 
   return <>
-    <section className="hero">
-      <div className="text">
-        <h1>Onde a lenda <br /> <span>encontra performance.</span></h1>
+    <section className={style.hero}>
+      <div className={style.text}>
+        <h1 className={style.title}>Onde a lenda <br /> <span className="">encontra performance.</span></h1>
         <p>Somos a maior plataforma de compra
           e troca de games do Brasil</p>
         <div>
@@ -56,11 +56,11 @@ export default function Home() {
           <ButtonComponent href="/pages/signIn" type="secondary" text="Cadastrar" />
         </div>
       </div>
-      <Image src={logo} alt="Logo do Iara Games" className="logo" />
+      <Image src={logo} alt="Logo do Iara Games" className={style.logo} />
     </section>
     <section>
-      <h2>Jogos de aventura</h2>
-      <div className="adventure-games">
+      <h2 className={style.categoryTitle}>Jogos de aventura</h2>
+      <div className={style.adventureGames}>
         {games.length > 0 && games.filter((game) => game.genres?.some((genre) => genre.id === 31)).map((game) => (
           <VerticalCardComponent
             key={game.id}
@@ -78,7 +78,7 @@ export default function Home() {
     </section>
     <section>
       <h2>Jogos Indie</h2>
-      <div className="action-games">
+      <div className={style.actionGames}>
         {games.length > 0 && games.filter((game) => game.genres?.some((genre) => genre.id === 32)).map((game) => (
           <VerticalCardComponent
             key={game.id}
